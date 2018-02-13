@@ -1,3 +1,4 @@
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -76,10 +77,23 @@ public class Main {
 
         }
 
-        System.out.println(count + " Slice ");
+
+        /*System.out.println(count + " Slice ");
         for (String s :output
              ) {
             System.out.println(s);
+        }*/
+
+        try {
+            PrintWriter pr = new PrintWriter(new File("eple.txt"));
+            pr.println( count + " slices.");
+            for (String s : output) {
+                pr.println(s);
+            }
+            pr.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         }
     }
 
