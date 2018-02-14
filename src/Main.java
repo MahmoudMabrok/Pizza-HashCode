@@ -12,7 +12,7 @@ public class Main {
         int row, col, min, max;
         Scanner in = null;
         try {
-            in = new Scanner(new File("small.in"));
+            in = new Scanner(new File("s.txt"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -66,7 +66,7 @@ public class Main {
                         if ((t >= min &&  m >= min))
                         {
                            count ++ ;
-                            output.add(new String(""+stRow+" "+stCol+" "+j+" "+i)) ;
+                            //output.add(new String(""+stRow+" "+stCol+" "+j+" "+i)) ;
 
                             /*System.out.println("start row , col " + stRow + " , " + stCol);
                             System.out.println("end " + j  + " , " + i);
@@ -74,13 +74,20 @@ public class Main {
                             t=0 ;
                             m=0 ;
 
+                            if (stRow == 0 && i!= stCol ){ //start from col and end in another
+                                output.add(new String(""+stRow+" "+stCol+" "+(row-1)+" "+i)) ; //(row -1 ) take all column
+                                break;
 
-                            if ( (row  - (j+ 1)) >= (2 * min) ) {
+                            }
+
+                            else if ( (row  - (j+ 1)) >= (2 * min) ) {
                                 stRow = j+1 ;
                                 stCol = i;
+                                output.add(new String(""+stRow+" "+stCol+" "+j+" "+i)) ;
                             }
                             else
                             {
+                                output.add(new String(""+stRow+" "+stCol+" "+j+" "+i)) ;
                                 stCol = i+1 ;
                                 stRow = 0 ;
                                 break;
@@ -96,13 +103,13 @@ public class Main {
 
 
         /*System.out.println(count + " Slice ");
-        for (String s :output
+        for (String s.txt :output
              ) {
-            System.out.println(s);
+            System.out.println(s.txt);
         }*/
 
         try {
-            PrintWriter pr = new PrintWriter(new File("2.txt"));
+            PrintWriter pr = new PrintWriter(new File("0.txt"));
             pr.println( count + " slices.");
             for (String s : output) {
                 pr.println(s);
