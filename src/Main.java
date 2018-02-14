@@ -10,7 +10,12 @@ public class Main {
 
     public static void main(String[] args) {
         int row, col, min, max;
-        Scanner in = new Scanner(System.in);
+        Scanner in = null;
+        try {
+            in = new Scanner(new File("small.in"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
 
         row = in.nextInt();
         col = in.nextInt();
@@ -33,19 +38,31 @@ public class Main {
         for (int i = 0; i < col ;i++ ) {
 
             for (int j = 0; j < row;j++ ) {
+
                 current =data[j].charAt(i) ;
                 if ( current != '#') {
-              //     count++ ; //count of visited
-                   // size++ ;
+
                     if (current == 'T')
                         t++;
                     else
                         m++ ;
-                    if ((t+m) < max &&  (t < min || m < min) ) // limit of pizza slice
+
+
+                    if(j==(row-1) && (t < min || m < min) && stRow !=0 )
+                    {
+                        //case reach end and not get min so start from next col
+                        stCol =i+1 ;
+                        stRow = 0 ;
+                        t=0;
+                        m=0;
+                        break;
+                    }
+                     else if ((t+m) < max &&  (t < min || m < min) ) // limit of pizza slice
                     {
                         continue;
                     }
-                    else{
+                    else{  //here it exceed size or get minimum n of t and m
+
                         if ((t >= min &&  m >= min))
                         {
                            count ++ ;
@@ -85,7 +102,7 @@ public class Main {
         }*/
 
         try {
-            PrintWriter pr = new PrintWriter(new File("eple.txt"));
+            PrintWriter pr = new PrintWriter(new File("2.txt"));
             pr.println( count + " slices.");
             for (String s : output) {
                 pr.println(s);
