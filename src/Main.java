@@ -76,6 +76,8 @@ public class Main {
 
                             if (stRow == 0 && i!= stCol ){ //start from col and end in another
                                 output.add(new String(""+stRow+" "+stCol+" "+(row-1)+" "+i)) ; //(row -1 ) take all column
+                                stRow = 0 ;
+                                stCol = i+1;
                                 break;
 
                             }
