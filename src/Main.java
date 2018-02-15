@@ -12,7 +12,7 @@ public class Main {
         int row, col, min, max;
         Scanner in = null;
         try {
-            in = new Scanner(new File("small.in"));
+            in = new Scanner(new File("big.in"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -96,6 +96,18 @@ public class Main {
                                 break;
                             }
 
+                        }
+                        else
+                        {
+                            t=0;
+                            m=0;
+
+                            if (i == stCol)
+                            {
+                                j =stRow+(max/2)  ;
+                                stRow = j+1 ;
+
+                            }
                         }
                     }
                 }
