@@ -12,7 +12,7 @@ public class Main {
         int row, col, min, max;
         Scanner in = null;
         try {
-            in = new Scanner(new File("s.txt"));
+            in = new Scanner(new File("small.in"));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -83,9 +83,10 @@ public class Main {
                             }
 
                             else if ( (row  - (j+ 1)) >= (2 * min) ) {
+                                output.add(new String(""+stRow+" "+stCol+" "+j+" "+i)) ;
                                 stRow = j+1 ;
                                 stCol = i;
-                                output.add(new String(""+stRow+" "+stCol+" "+j+" "+i)) ;
+
                             }
                             else
                             {
@@ -112,7 +113,7 @@ public class Main {
 
         try {
             PrintWriter pr = new PrintWriter(new File("0.txt"));
-            pr.println( count + " slices.");
+            pr.println( count);
             for (String s : output) {
                 pr.println(s);
             }
